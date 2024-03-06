@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/head.html" %}
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Internet Hotspot Management</h1>
+
+        <div class="text-end mb-3">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        Router Information
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Router Uptime: {{ uptime }}</h6>
+                        <p class="card-text">Router OS: {{ router_os_version }}</p>
+                        <p class="card-text">CPU Frequency: {{ cpu_frequency }}MHz</p>
+                        <p class="card-text">CPU Cores: {{ cpu_cores }}</p>
+                        <p class="card-text">Architecture: {{ architecture }}</p>
+                        <p class="card-text">Board Name: {{ board_name }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        CPU Usage
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">CPU ({{ cpu_load }}% used)</h5>
+                        <div class="progress mb-2">
+                            <div class="progress-bar" role="progressbar" style="width: {{ cpu_load }}%"
+                                aria-valuenow="{{ cpu_load }}" aria-valuemin="0" aria-valuemax="100">{{ cpu_load }}%
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                CPU: {{ cpu }}
+                                <br>
+                                Frequency: {{ cpu_frequency }}MHz</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        RAM Usage
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">RAM ({{ ram_percentage }}% used)</h5>
+                        <div class="progress mb-2">
+                            <div class="progress-bar" role="progressbar" style="width: {{ ram_percentage }}%"
+                                aria-valuenow="{{ ram_percentage }}" aria-valuemin="0" aria-valuemax="100">{{
+                                ram_percentage }}%</div>
+                        </div>
+                        <p class="card-text"><small class="text-muted">Used: {{ total_memory - free_memory }}MB / Total:
+                                {{ total_memory }}MB
+                                <br>
+                                Free: {{ free_memory }}MB
+                            </small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        HDD Usage
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">HDD ({{ hdd_percentage }}% used)</h5>
+                        <div class="progress mb-2">
+                            <div class="progress-bar" role="progressbar" style="width: {{ hdd_percentage }}%"
+                                aria-valuenow="{{ hdd_percentage }}" aria-valuemin="0" aria-valuemax="100">{{
+                                hdd_percentage }}%</div>
+                        </div>
+                        <p class="card-text"><small class="text-muted">Free: {{ free_hdd_space }}MB / Total: {{
+                                total_hdd_space }}MB
+                                <br>
+                                Used: {{ used_hdd }}MB
+                            </small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
